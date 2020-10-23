@@ -3,7 +3,7 @@ package com.example.architecture.contract.v1.user;
 import com.example.architecture.contract.v1.user.mapper.UserMapper;
 import com.example.architecture.contract.v1.user.model.request.UserRequest;
 import com.example.architecture.contract.v1.user.model.response.UserResponse;
-import com.example.architecture.impl.user.UserFacade;
+import com.example.architecture.impl.ImplFacade;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +11,15 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class UserContractFacade {
 
-    private UserFacade facade;
+    private ImplFacade implFacade;
 
     UserResponse findById(String id) {
-        return UserMapper.mapToContract(facade.findById(id));
+        return UserMapper.mapToContract(implFacade.user().findById(id));
     }
 
     UserResponse create(UserRequest user) {
-        return UserMapper.mapToContract(facade.create(UserMapper.mapToImpl(user)));
+        implFacade.order().find();
+        return UserMapper.mapToContract(implFacade.user().create(UserMapper.mapToImpl(user)));
     }
+
 }

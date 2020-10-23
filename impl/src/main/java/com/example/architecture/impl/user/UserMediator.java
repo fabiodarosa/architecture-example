@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
-public class UserFacade {
+public class UserMediator {
 
     private UserService service;
 
