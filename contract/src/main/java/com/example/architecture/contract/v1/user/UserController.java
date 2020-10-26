@@ -20,6 +20,11 @@ public class UserController {
         return facade.findById(id);
     }
 
+    @GetMapping("/name")
+    public String getName() {
+        return "Fabio";
+    }
+
     @PostMapping
     public UserResponse create(@RequestBody UserRequest user) {
         return facade.create(user);
