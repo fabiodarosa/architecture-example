@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
-public class OrderContractFacade {
+public class OrderContractMediator {
 
     private ImplFacade implFacade;
 
@@ -18,7 +18,7 @@ public class OrderContractFacade {
     }
 
     OrderResponse create(CreateOrderRequest user) {
-        implFacade.order().find();
+        implFacade.order().find("OI");
         return OrderMapper.mapToContract(implFacade.user().create(OrderMapper.mapToImpl(user)));
     }
 

@@ -1,5 +1,7 @@
 package com.example.architecture.impl.order;
 
+import com.example.architecture.impl.user.model.UserModel;
+import com.example.architecture.impl.user.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -7,8 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderMediator {
 
-    public String find() {
-        return "Order";
+    private UserService userService;
+    private OrderService orderService;
+
+    public String find(String clientCPF) {
+        UserModel user = userService.findById(clientCPF);
+        return orderService.order(user.getName());
     }
 
 }

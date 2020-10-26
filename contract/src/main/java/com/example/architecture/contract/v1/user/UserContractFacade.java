@@ -18,7 +18,7 @@ public class UserContractFacade {
     }
 
     UserResponse create(UserRequest user) {
-        implFacade.order().find();
+        implFacade.order().find("OI");
         return UserMapper.mapToContract(implFacade.user().create(UserMapper.mapToImpl(user)));
     }
 
