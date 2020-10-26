@@ -24,9 +24,4 @@ public class UserController {
     public UserResponse create(@RequestBody UserRequest user) {
         return facade.create(user);
     }
-
-    @ExceptionHandler(RuntimeException.class)
-    public String handle(RuntimeException e) {
-        return e.getMessage();
-    }
 }
